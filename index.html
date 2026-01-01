@@ -3,117 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <title>Mohamed Ibrahim — Software Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: "Inter", sans-serif; }
-    .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .fade-up.show { opacity: 1; transform: translateY(0); }
-    .btn-green { background-color: #16a34a; color: #fff; }
-    .btn-green:hover { background-color: #15803d; }
+    .fade { opacity:0; transform: translateY(40px); transition: all .8s ease; }
+    .fade.show { opacity:1; transform:none; }
   </style>
 </head>
 
-<body class="bg-[#f7fdf9] text-gray-800">
+<body class="bg-white text-gray-800">
 
-<!-- HEADER -->
-<header class="fixed w-full bg-white shadow-md z-50">
-  <nav class="max-w-5xl mx-auto flex justify-between items-center py-4 px-6">
-    <a href="#" class="text-xl font-bold text-green-700">Mohamed Ibrahim</a>
-    <div class="space-x-6 text-sm font-medium">
+<!-- NAV -->
+<header class="fixed top-0 w-full bg-white/90 backdrop-blur border-b z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    <span class="font-bold text-green-700">Mohamed Ibrahim</span>
+    <nav class="space-x-6 text-sm">
       <a href="#about" class="hover:text-green-600">About</a>
       <a href="#skills" class="hover:text-green-600">Skills</a>
       <a href="#projects" class="hover:text-green-600">Projects</a>
       <a href="#contact" class="hover:text-green-600">Contact</a>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center pt-24">
-  <div class="text-center space-y-4 fade-up" id="hero">
-    <h1 class="text-5xl font-bold text-green-800">Hi, I'm Mohamed Ibrahim</h1>
-    <p class="text-xl text-gray-600">Software Engineer • PHP & Laravel</p>
-    <a href="#contact" class="btn-green px-6 py-3 rounded-full inline-block mt-4">
-      Contact Me
+<section class="min-h-screen flex items-center justify-center text-center pt-24 fade">
+  <div>
+    <h1 class="text-5xl font-bold mb-4 text-green-800">Designer, Developer & Mentor</h1>
+    <p class="text-xl text-gray-600 mb-6">I design and build beautifully simple digital products.</p>
+    <a href="#contact" class="px-6 py-3 rounded-full border-2 border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition">
+      Say Hello
     </a>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="max-w-4xl mx-auto my-24 px-6 fade-up">
-  <h2 class="text-3xl font-bold text-green-800 mb-4">About Me</h2>
-  <p class="text-gray-700 leading-relaxed">
-    I'm a passionate software engineer specialized in building scalable business solutions using PHP and Laravel.
-    I build real applications like CRM systems, clinic systems, POS dashboards, and internal tools.
+<section id="about" class="max-w-4xl mx-auto py-24 px-6 text-center fade">
+  <h2 class="text-3xl font-bold text-green-800 mb-4">Hi, I'm Mohamed. Nice to meet you.</h2>
+  <p class="text-gray-600 leading-relaxed">
+    I'm a software engineer specializing in building clean, scalable business systems with PHP & Laravel.
+    I enjoy turning complex problems into simple, beautiful solutions.
   </p>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="bg-white py-20 fade-up">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-green-800 mb-8">Skills</h2>
-    <div class="flex flex-wrap gap-3">
-      <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">PHP</span>
-      <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">Laravel</span>
-      <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">MySQL</span>
-      <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">REST APIs</span>
-      <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">Tailwind</span>
+<section id="skills" class="bg-green-50 py-24 fade">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+    <div>
+      <h3 class="text-xl font-semibold mb-3 text-green-700">Design</h3>
+      <p class="text-gray-600 text-sm">UI, UX, Web, Mobile</p>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold mb-3 text-green-700">Development</h3>
+      <p class="text-gray-600 text-sm">PHP, Laravel, MySQL, APIs</p>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold mb-3 text-green-700">Mentoring</h3>
+      <p class="text-gray-600 text-sm">Code reviews, system design, coaching</p>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="max-w-6xl mx-auto py-24 px-6 fade-up">
-  <h2 class="text-3xl font-bold text-green-800 mb-12">Projects</h2>
-
-  <div class="grid md:grid-cols-2 gap-8">
-    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
-      <h3 class="text-xl font-semibold text-green-700">Clinic Management System</h3>
-      <p class="text-gray-600 mt-3 text-sm">
-        A full system to manage patients, doctors, appointments, and invoices built with Laravel.
-      </p>
-      <a href="https://github.com/mohamedabdelsabor/clinic_medo_crm" target="_blank"
-         class="text-green-600 hover:underline mt-3 inline-block">
-         View on GitHub →
-      </a>
+<section id="projects" class="max-w-6xl mx-auto py-24 px-6 fade">
+  <h2 class="text-3xl font-bold text-center text-green-800 mb-12">My Recent Work</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="border rounded-xl p-6 hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Clinic Management System</h3>
+      <p class="text-sm text-gray-600">Appointments, patients, billing, reports.</p>
     </div>
-
-    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
-      <h3 class="text-xl font-semibold text-green-700">Medo Mobile CRM</h3>
-      <p class="text-gray-600 mt-3 text-sm">
-        A CRM solution for mobile shops to handle sales, users, and reporting.
-      </p>
+    <div class="border rounded-xl p-6 hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Mobile Shop CRM</h3>
+      <p class="text-sm text-gray-600">Sales, inventory, users, dashboards.</p>
+    </div>
+    <div class="border rounded-xl p-6 hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Internal ERP Tools</h3>
+      <p class="text-sm text-gray-600">Custom dashboards for operations.</p>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="bg-white py-20 fade-up">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold text-green-800 mb-4">Get In Touch</h2>
-    <p class="text-gray-700 mb-6">Let's build something great together!</p>
-    <a href="mailto:your@email.com"
-       class="btn-green px-6 py-3 rounded-full">
-       Send Email
-    </a>
-  </div>
+<section id="contact" class="bg-green-700 text-white py-24 text-center fade">
+  <h2 class="text-3xl font-bold mb-4">Start a project</h2>
+  <p class="mb-6">Interested in working together? Let's talk.</p>
+  <a href="mailto:youremail@example.com" class="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-green-700 transition">
+    Contact Me
+  </a>
 </section>
 
 <!-- FOOTER -->
-<footer class="text-center py-6 text-gray-500 text-sm">
-  © 2025 Mohamed Ibrahim. All rights reserved.
+<footer class="py-8 text-center text-sm text-gray-500 fade">
+  Living, learning, & leveling up one day at a time.
 </footer>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
-    });
-  });
-  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  const obs = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add("show")));
+  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
 </script>
 
 </body>
