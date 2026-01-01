@@ -5,8 +5,40 @@
   <title>Mohamed Ibrahim — Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     html { scroll-behavior: smooth; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-6px);
+    }
+
+    .hero-anim {
+      animation: heroFade 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes heroFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+    }
   </style>
 </head>
 
@@ -16,7 +48,7 @@
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_70%)]"></div>
 
-  <div class="relative z-10 text-center space-y-6 px-6">
+  <div class="relative z-10 text-center space-y-6 px-6 hero-anim">
     <h1 class="text-5xl font-bold tracking-tight">Mohamed Ibrahim</h1>
     <p class="text-xl text-slate-400">Software Engineer • PHP & Laravel</p>
 
@@ -34,18 +66,15 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="max-w-5xl mx-auto py-24 px-6">
+<section class="max-w-5xl mx-auto py-24 px-6 fade-up">
   <h2 class="text-3xl font-bold mb-6">About Me</h2>
   <p class="text-slate-400 leading-relaxed max-w-3xl">
     I'm a software engineer specialized in building business systems using PHP and Laravel.
-    I focus on creating clean, scalable, and user-friendly applications for real-world needs
-    such as CRM systems, clinic management, POS, and internal dashboards.
+    I focus on creating clean, scalable, and user-friendly applications.
   </p>
 </section>
 
-<!-- SKILLS -->
-<section class="bg-slate-900/40 py-20">
+<section class="bg-slate-900/40 py-20 fade-up">
   <div class="max-w-5xl mx-auto px-6">
     <h2 class="text-3xl font-bold mb-8">Skills</h2>
 
@@ -54,44 +83,55 @@
       <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">Laravel</span>
       <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">MySQL</span>
       <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">REST APIs</span>
-      <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">Tailwind CSS</span>
-      <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">Bootstrap</span>
-      <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">Git & GitHub</span>
+      <span class="px-4 py-2 rounded-full bg-slate-800 text-sm">Tailwind</span>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section class="max-w-6xl mx-auto py-24 px-6">
+<section class="max-w-6xl mx-auto py-24 px-6 fade-up">
   <h2 class="text-3xl font-bold mb-12">Projects</h2>
 
   <div class="grid md:grid-cols-2 gap-8">
 
-    <div class="bg-slate-900 p-6 rounded-2xl shadow-xl hover:shadow-indigo-500/10 transition">
+    <div class="bg-slate-900 p-6 rounded-2xl shadow-xl transition hover-lift">
       <h3 class="text-xl font-semibold">Clinic Management System</h3>
       <p class="text-slate-400 mt-3 text-sm">
         A full clinic system with patients, doctors, appointments, and invoices.
       </p>
-      <a href="https://github.com/mohamedabdelsabor/clinic_medo_crm" target="_blank"
-         class="inline-block mt-4 text-indigo-400 hover:underline">
-         View on GitHub →
-      </a>
     </div>
 
-    <div class="bg-slate-900 p-6 rounded-2xl shadow-xl hover:shadow-indigo-500/10 transition">
+    <div class="bg-slate-900 p-6 rounded-2xl shadow-xl transition hover-lift">
       <h3 class="text-xl font-semibold">Medo Mobile CRM</h3>
       <p class="text-slate-400 mt-3 text-sm">
-        CRM system for mobile shops to manage sales, customers, inventory, and reports.
+        CRM system for mobile shops.
+      </p>
+    </div>
+
+     <div class="bg-slate-900 p-6 rounded-2xl shadow-xl transition hover-lift">
+      <h3 class="text-xl font-semibold">Medo Mobile CRM</h3>
+      <p class="text-slate-400 mt-3 text-sm">
+        CRM system for Corporates.
       </p>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="text-center py-8 text-slate-500 text-sm border-t border-slate-800">
+<footer class="text-center py-8 text-slate-500 text-sm border-t border-slate-800 fade-up">
   © 2025 Mohamed Ibrahim — All rights reserved.
 </footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
