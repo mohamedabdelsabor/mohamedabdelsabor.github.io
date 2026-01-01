@@ -23,7 +23,7 @@
     .fade {
       opacity: 0;
       transform: translateY(40px);
-      transition: all 1s ease;
+      transition: opacity 1s ease, transform 1s ease;
     }
     .fade.show {
       opacity: 1;
@@ -43,10 +43,11 @@
       z-index: 0;
       pointer-events: none;
     }
-    body > *:not(#particles) {
+   main > * {
       position: relative;
       z-index: 1;
     }
+
 
     #mouse-glow {
       position: fixed;
@@ -88,7 +89,7 @@
     }
 
     .glass {
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(15, 23, 42, 0.65);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.08);
@@ -115,7 +116,7 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: rgba(2, 6, 23, 0.7);
+      background: rgba(2, 6, 23, 0.55);
     }
     
     .neon:hover::before {
@@ -129,6 +130,7 @@
 
 
     .tilt {
+      user-select: none;
       transform-style: preserve-3d;
       transition: transform 0.15s ease;
       will-change: transform;
@@ -185,6 +187,11 @@
     .nav-link:hover::after {
       width: 100%;
     }
+
+    .nav-link:focus-visible {
+      outline: 2px solid #22c55e;
+      outline-offset: 4px;
+    }
     
     .nav-link.active {
       color: #22c55e;
@@ -227,6 +234,14 @@
       }
     }
 
+    #ambient-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
   </style>
 </head>
 
@@ -235,14 +250,7 @@
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-sky-400 z-[60]"></div>
 
 
-  <canvas id="particles"></canvas>
-  <div id="mouse-glow"></div>
-  <div class="orb green parallax" data-speed="0.15"></div>
-  <div class="orb blue parallax" data-speed="0.2"></div>
-
-
-
-<header id="navbar"
+  <header id="navbar"
   class="fixed top-0 inset-x-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 shadow-lg shadow-black/30 transition-all duration-500">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
   <span class="font-semibold tracking-wide text-emerald-400 hover:text-sky-400 transition">
@@ -257,6 +265,16 @@
 </div>
 
 </header>
+<div id="ambient-layer">
+  <canvas id="particles"></canvas>
+  <div id="mouse-glow"></div>
+  <div class="orb green parallax" data-speed="0.15"></div>
+  <div class="orb blue parallax" data-speed="0.2"></div>
+</div>
+
+
+
+
 
 <section class="min-h-screen flex items-center justify-center text-center hero-offset">
   <div class="fade hero-float">
