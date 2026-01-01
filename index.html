@@ -217,10 +217,16 @@
         display: none;
       }
     }
+    .hero-offset {
+      padding-top: 5rem; /* approx navbar height */
+    }
 
+    @media (min-height: 800px) {
+      .hero-offset {
+        padding-top: 3rem;
+      }
+    }
 
-
-    
   </style>
 </head>
 
@@ -252,7 +258,7 @@
 
 </header>
 
-<section class="min-h-screen flex items-center justify-center text-center pt-24">
+<section class="min-h-screen flex items-center justify-center text-center hero-offset">
   <div class="fade hero-float">
     <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
       Building Digital Systems That Feel Alive
