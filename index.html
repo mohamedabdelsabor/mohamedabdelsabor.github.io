@@ -572,7 +572,7 @@ pre.mono:hover {
   100% { background-position: 0 100%; }
 }
 
-nav-container {
+.nav-container {
   position: relative;
   display: flex;
   gap: 2.5rem;
@@ -641,10 +641,10 @@ nav-container {
 
 <nav class="nav-container mono nav-enter">
   <span id="nav-indicator"></span>
-<a href="#about" class="nav-link" data-nav>about</a>
-<a href="#projects" class="nav-link" data-nav>projects</a>
-<a href="#contact" class="nav-link" data-nav>contact</a>
-</span></nav>
+  <a href="#about" class="nav-link" data-nav>about</a>
+  <a href="#projects" class="nav-link" data-nav>projects</a>
+  <a href="#contact" class="nav-link" data-nav>contact</a>
+</nav>
 </div>
 
 </header>
@@ -824,7 +824,12 @@ const engineer = {
   document.querySelectorAll('.fade').forEach(el => observer.observe(el));
   document.querySelectorAll('.social-anim').forEach(el => observer.observe(el));
 
-
+document.querySelectorAll('.fade').forEach(el => {
+  observer.observe(el);
+  if (el.getBoundingClientRect().top < window.innerHeight) {
+    el.classList.add('show');
+  }
+});
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let w, h, particles = [];
