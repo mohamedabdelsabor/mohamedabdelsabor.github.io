@@ -257,6 +257,15 @@
   pointer-events: none;
 }
 
+.hero-avatar {
+  animation: avatarFloat 7s ease-in-out infinite alternate;
+}
+
+@keyframes avatarFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
 
   </style>
 </head>
@@ -274,18 +283,8 @@
         Mohamed Ibrahem
       </span>
       <span class="text-slate-400 mx-2">·</span>
-      <span class="text-slate-400 text-xs">software engineer</span>
+      <span class="text-slate-400 text-xs">Software Engineer</span>
     </div>
-
-    <nav class="flex space-x-10 text-sm font-medium nav-enter">
-      <a href="#about" class="nav-link">About me</a>
-      <a href="#projects" class="nav-link">What I build</a>
-      <a href="#contact" class="nav-link">Let’s talk</a>
-    </nav>
-
-  </div>
-</header>
-
 
 
   <nav class="flex space-x-10 text-sm font-medium nav-enter">
@@ -305,13 +304,18 @@
 
 
 
-
-
-<section class="min-h-screen flex items-center justify-center text-center hero-offset">
-  <div class="fade hero-float">
+<section class="min-h-screen flex items-center justify-center hero-offset">
+  <div class="fade hero-float flex flex-col items-center text-center space-y-10">
     <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
       Building Digital Systems That Feel Alive
     </h1>
+    <div class="relative group">
+      <div class="absolute inset-0 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-emerald-400 to-sky-400"></div>
+      <img src="me.jpg"
+           alt="Mohamed Ibrahem"
+           class="relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+    </div>
+
     <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
       Software Engineer crafting elegant business software using PHP & Laravel.
     </p>
