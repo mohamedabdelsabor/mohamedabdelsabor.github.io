@@ -123,8 +123,9 @@
     }
     
     .neon:hover::before {
-      opacity: 0.35; /* reduced */
+      opacity: 0.2;
     }
+
     
     .neon > * {
       position: relative;
@@ -301,11 +302,25 @@
   background: rgba(255,255,255,0.04);
   color: #94a3b8;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
+
 
 .social-icon:hover {
   transform: translateY(-3px) scale(1.1);
   box-shadow: 0 0 18px rgba(56,189,248,0.35);
+}
+
+
+.social-icon:hover::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%);
+  opacity: 0.6;
+  z-index: -1;
 }
 
 /* Brand hover colors */
@@ -320,8 +335,14 @@
 .social-anim {
   opacity: 0;
   transform: translateY(12px) scale(0.95);
-  animation: socialEnter 0.8s ease forwards;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
+.social-anim.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 
 .social-anim:nth-child(1) { animation-delay: 0.05s; }
 .social-anim:nth-child(2) { animation-delay: 0.12s; }
@@ -362,6 +383,14 @@
 .group:hover .icon-fade {
   box-shadow: 0 0 16px rgba(56,189,248,0.4);
 }
+
+#cursor,
+#cursor-ring,
+#mouse-glow {
+  pointer-events: none !important;
+  z-index: 1;
+}
+
 
 
 
@@ -545,6 +574,8 @@
     entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
   });
   document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  document.querySelectorAll('.social-anim').forEach(el => observer.observe(el));
+
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -676,6 +707,21 @@ window.addEventListener("scroll", () => {
 }, { threshold: 0.4 });
 
 document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
+
+
+  document.querySelectorAll('.social-icon').forEach(icon => {
+  icon.addEventListener('mousemove', e => {
+    const rect = icon.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    icon.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.12)`;
+  });
+
+  icon.addEventListener('mouseleave', () => {
+    icon.style.transform = 'translate(0,0) scale(1)';
+  });
+});
+
   
 </script>
 
