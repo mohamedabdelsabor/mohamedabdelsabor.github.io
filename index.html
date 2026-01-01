@@ -510,6 +510,25 @@ pre.mono:hover {
   background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.35));
 }
 
+.chapter {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(139,92,246,0.6);
+  margin-bottom: 1rem;
+}
+    
+#grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.06;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+
   </style>
 </head>
 
@@ -624,6 +643,7 @@ pre.mono:hover {
 
 
 <section id="about" class="max-w-5xl mx-auto py-32 px-6 fade">
+<div class="chapter">Chapter I</div>
 <h2 class="text-3xl font-semibold mb-6 text-violet-400 mono">
   /* About Me */
 </h2>
@@ -641,6 +661,7 @@ const engineer = {
   <div class="section-divider"></div>
 
 <section id="projects" class="max-w-6xl mx-auto py-32 px-6 fade">
+  <div class="chapter">Chapter II</div>
 <h2 class="text-3xl font-semibold mb-12 text-pink-400 relative mono">
   /* Selected Projects */
     <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
@@ -686,6 +707,7 @@ const engineer = {
   <div class="section-divider"></div>
 
 <section id="contact" class="py-40 text-center fade">
+  <div class="chapter">Chapter III</div>
   <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent mono">
   /* Let’s Build Something Extraordinary */
 </h2>
@@ -698,7 +720,6 @@ const engineer = {
 </section>
 
   <div class="section-divider"></div>
-
 <footer class="py-12 text-center text-slate-500 text-sm border-t border-slate-800">
   © 2025 Mohamed Ibrahem — Crafted with care.
 </footer>
@@ -929,5 +950,7 @@ document.addEventListener("click", () => {
 </script>
   
 <div id="vignette"></div>
+<div id="grain"></div>
+
 </body>
 </html>
