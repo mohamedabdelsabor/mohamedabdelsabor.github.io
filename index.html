@@ -5,102 +5,316 @@
   <title>Mohamed Ibrahim — Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     html { scroll-behavior: smooth; }
-    .fade { opacity:0; transform: translateY(40px); transition: all .8s ease; }
-    .fade.show { opacity:1; transform:none; }
+
+    .glow {
+      box-shadow: 0 0 25px rgba(34,197,94,.35),
+                  0 0 60px rgba(59,130,246,.25);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    .fade.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .bg-ambient {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34,197,94,0.15), transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(59,130,246,0.18), transparent 50%),
+        linear-gradient(180deg, #020617, #020617);
+    }
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body > *:not(#particles) {
+      position: relative;
+      z-index: 1;
+    }
+
+    #mouse-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(34,197,94,0.18), rgba(59,130,246,0.12), transparent 60%);
+      filter: blur(60px);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+    
+    .orb.green {
+      background: radial-gradient(circle, rgba(34,197,94,0.8), transparent 60%);
+      top: 20%;
+      left: -150px;
+    }
+    
+    .orb.blue {
+      background: radial-gradient(circle, rgba(59,130,246,0.8), transparent 60%);
+      bottom: 10%;
+      right: -150px;
+    }
+    
+    @keyframes float {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-120px); }
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 30px rgba(34,197,94,0.08);
+    }
+
+    .neon {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .neon::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, #22c55e, #38bdf8, #22c55e);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    
+    .neon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(2, 6, 23, 0.7);
+    }
+    
+    .neon:hover::before {
+      opacity: 1;
+    }
+    
+    .neon > * {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease;
+      will-change: transform;
+    }
+    
+    .tilt::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--x) var(--y),
+        rgba(56,189,248,0.25),
+        transparent 60%);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    
+    .tilt:hover::after {
+      opacity: 1;
+    }
+
+    
+
+
   </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-ambient text-slate-200 overflow-x-hidden">
 
-<!-- NAV -->
-<header class="fixed top-0 w-full bg-white/90 backdrop-blur border-b z-50">
+  <canvas id="particles"></canvas>
+  <div id="mouse-glow"></div>
+  <div class="orb green parallax" data-speed="0.15"></div>
+  <div class="orb blue parallax" data-speed="0.2"></div>
+
+
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-    <span class="font-bold text-green-700">Mohamed Ibrahim</span>
+    <span class="font-semibold tracking-wide text-emerald-400">Mohamed Ibrahim</span>
     <nav class="space-x-6 text-sm">
-      <a href="#about" class="hover:text-green-600">About</a>
-      <a href="#skills" class="hover:text-green-600">Skills</a>
-      <a href="#projects" class="hover:text-green-600">Projects</a>
-      <a href="#contact" class="hover:text-green-600">Contact</a>
+      <a href="#about" class="hover:text-emerald-400">About</a>
+      <a href="#projects" class="hover:text-emerald-400">Projects</a>
+      <a href="#contact" class="hover:text-emerald-400">Contact</a>
     </nav>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="min-h-screen flex items-center justify-center text-center pt-24 fade">
-  <div>
-    <h1 class="text-5xl font-bold mb-4 text-green-800">Designer, Developer & Mentor</h1>
-    <p class="text-xl text-gray-600 mb-6">I design and build beautifully simple digital products.</p>
-    <a href="#contact" class="px-6 py-3 rounded-full border-2 border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition">
-      Say Hello
+<section class="min-h-screen flex items-center justify-center text-center pt-24">
+  <div class="fade parallax" data-speed="0.3">
+    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
+      Building Digital Systems That Feel Alive
+    </h1>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+      Software Engineer crafting elegant business software using PHP & Laravel.
+    </p>
+    <a href="#contact"
+       class="px-8 py-4 rounded-full border border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 transition glow">
+      Start a Project
     </a>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="max-w-4xl mx-auto py-24 px-6 text-center fade">
-  <h2 class="text-3xl font-bold text-green-800 mb-4">Hi, I'm Mohamed. Nice to meet you.</h2>
-  <p class="text-gray-600 leading-relaxed">
-    I'm a software engineer specializing in building clean, scalable business systems with PHP & Laravel.
-    I enjoy turning complex problems into simple, beautiful solutions.
+<section id="about" class="max-w-5xl mx-auto py-32 px-6 fade">
+  <h2 class="text-3xl font-semibold mb-6 text-emerald-400">About Me</h2>
+  <p class="text-slate-400 leading-relaxed">
+    I'm Mohamed, a software engineer focused on building clean, scalable and visually refined
+    digital products. I specialize in Laravel-based systems for real businesses, not demos.
   </p>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="bg-green-50 py-24 fade">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
-    <div>
-      <h3 class="text-xl font-semibold mb-3 text-green-700">Design</h3>
-      <p class="text-gray-600 text-sm">UI, UX, Web, Mobile</p>
+<section id="projects" class="max-w-6xl mx-auto py-32 px-6 fade">
+  <h2 class="text-3xl font-semibold mb-12 text-sky-400">Selected Projects</h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+
+  <div class="glass neon tilt border border-slate-800 rounded-2xl p-8 transition glow">
+      <h3 class="text-xl font-semibold mb-2 text-emerald-300">Clinic Management</h3>
+      <p class="text-slate-400 text-sm">Patients, appointments, billing, analytics.</p>
     </div>
-    <div>
-      <h3 class="text-xl font-semibold mb-3 text-green-700">Development</h3>
-      <p class="text-gray-600 text-sm">PHP, Laravel, MySQL, APIs</p>
+
+  <div class="glass neon tilt border border-slate-800 rounded-2xl p-8 transition glow">
+      <h3 class="text-xl font-semibold mb-2 text-sky-300">Mobile Shop CRM</h3>
+      <p class="text-slate-400 text-sm">Sales, inventory, staff, dashboards.</p>
     </div>
-    <div>
-      <h3 class="text-xl font-semibold mb-3 text-green-700">Mentoring</h3>
-      <p class="text-gray-600 text-sm">Code reviews, system design, coaching</p>
+
+  <div class="glass neon tilt border border-slate-800 rounded-2xl p-8 transition glow">
+      <h3 class="text-xl font-semibold mb-2 text-emerald-300">Internal ERP</h3>
+      <p class="text-slate-400 text-sm">Operations, reports, role-based systems.</p>
     </div>
+
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="max-w-6xl mx-auto py-24 px-6 fade">
-  <h2 class="text-3xl font-bold text-center text-green-800 mb-12">My Recent Work</h2>
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="border rounded-xl p-6 hover:shadow-lg transition">
-      <h3 class="font-semibold mb-2">Clinic Management System</h3>
-      <p class="text-sm text-gray-600">Appointments, patients, billing, reports.</p>
-    </div>
-    <div class="border rounded-xl p-6 hover:shadow-lg transition">
-      <h3 class="font-semibold mb-2">Mobile Shop CRM</h3>
-      <p class="text-sm text-gray-600">Sales, inventory, users, dashboards.</p>
-    </div>
-    <div class="border rounded-xl p-6 hover:shadow-lg transition">
-      <h3 class="font-semibold mb-2">Internal ERP Tools</h3>
-      <p class="text-sm text-gray-600">Custom dashboards for operations.</p>
-    </div>
-  </div>
-</section>
+<section id="contact" class="py-40 text-center fade">
+  <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
+    Let’s Build Something Extraordinary
+  </h2>
+  <p class="text-slate-400 mb-10">Have a project in mind? Let’s talk.</p>
 
-<!-- CONTACT -->
-<section id="contact" class="bg-green-700 text-white py-24 text-center fade">
-  <h2 class="text-3xl font-bold mb-4">Start a project</h2>
-  <p class="mb-6">Interested in working together? Let's talk.</p>
-  <a href="mailto:youremail@example.com" class="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-green-700 transition">
+  <a href="mailto:youremail@example.com"
+     class="px-10 py-4 rounded-full border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition glow">
     Contact Me
   </a>
 </section>
 
-<!-- FOOTER -->
-<footer class="py-8 text-center text-sm text-gray-500 fade">
-  Living, learning, & leveling up one day at a time.
+<footer class="py-12 text-center text-slate-500 text-sm border-t border-slate-800">
+  © 2025 Mohamed Ibrahim — Crafted with care.
 </footer>
 
 <script>
-  const obs = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add("show")));
-  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+  });
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let w, h, particles = [];
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 2 + 1,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    hue: Math.random() * 60 + 140
+  });
+}
+
+function draw() {
+  ctx.clearRect(0,0,w,h);
+  for (let p of particles) {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.15)`;
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+const glow = document.getElementById("mouse-glow");
+
+window.addEventListener("mousemove", e => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+const parallax = document.querySelectorAll('.parallax');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  parallax.forEach(el => {
+    const speed = el.dataset.speed;
+    el.style.transform = `translateY(${scrollY * speed}px)`;
+  });
+});
+
+document.querySelectorAll('.tilt').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rx = ((y / rect.height) - 0.5) * 12;
+    const ry = ((x / rect.width) - 0.5) * -12;
+
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    card.style.setProperty('--x', `${x}px`);
+    card.style.setProperty('--y', `${y}px`);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  });
+});
+
+
+
+  
 </script>
 
 </body>
