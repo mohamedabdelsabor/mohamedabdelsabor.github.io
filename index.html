@@ -9,7 +9,7 @@
   <meta property="og:description" content="Crafting elegant digital systems using PHP & Laravel.">
   <meta property="og:type" content="website">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
 
@@ -20,13 +20,17 @@
 
     .fade {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(40px) scale(0.96);
+      filter: blur(6px);
+      transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
     }
+    
     .fade.show {
       opacity: 1;
       transform: none;
+      filter: blur(0);
     }
+
 
     .bg-ambient {
       background:
@@ -390,8 +394,121 @@
   z-index: 1;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+h1, h2 {
+  font-family: 'DM Serif Display', serif;
+  letter-spacing: 0.04em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+  font-size: 0.9em;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(139,92,246,0.6);
+  animation: typing 2.8s steps(40,end), blink .8s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+pre.mono {
+  background: rgba(255,255,255,0.02);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(139,92,246,0.15);
+  transition: box-shadow 0.4s ease;
+}
+
+pre.mono:hover {
+  box-shadow: 0 0 30px rgba(139,92,246,0.35);
+}
 
 
+.terminal {
+  background: rgba(2,6,23,0.9);
+  border-radius: 1rem;
+  padding: 1.2rem 1.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #e5e7eb;
+  box-shadow: 0 0 40px rgba(139,92,246,0.35);
+  border: 1px solid rgba(139,92,246,0.25);
+  width: 360px;
+  max-width: 90vw;
+  animation: terminalPulse 6s ease-in-out infinite;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+}
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #facc15; }
+.dot.green { background: #22c55e; }
+
+.terminal-body {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-line;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.terminal-body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes terminalPulse {
+  0%,100% { box-shadow: 0 0 40px rgba(139,92,246,0.25); }
+  50%     { box-shadow: 0 0 55px rgba(139,92,246,0.45); }
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  background: #e5e7eb;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.depth {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+#vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.35));
+}
 
   </style>
 </head>
@@ -432,14 +549,15 @@
 
 <section class="min-h-screen flex items-center justify-center hero-offset">
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
-    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+    <h1 class="depth text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
       Building Digital Systems That Feel Alive
     </h1>
+
     <div class="relative group">
       <div class="absolute inset-0 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-violet-400 to-pink-400"></div>
       <img src="me.jpg"
-           alt="Mohamed Ibrahem"
-           class="relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+         alt="Mohamed Ibrahem"
+         class="depth relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
     </div>
 
     <div class="flex items-center justify-center gap-6 fade">
@@ -480,9 +598,21 @@
 </div>
 
 
-    <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-      Software Engineer crafting elegant business software using PHP & Laravel.
+    <p class="mono text-slate-400 max-w-2xl mx-auto mb-10 typewriter">
+      // Crafting elegant business systems with PHP, Laravel & modern UX
     </p>
+    
+    <!-- 👇 PASTE TERMINAL HERE -->
+  <div class="terminal depth fade">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <div class="terminal-body" id="terminal"></div>
+  </div>
+  <!-- 👆 END TERMINAL -->
+    
     <a href="#contact"
        class="px-8 py-4 rounded-full border border-violet-400 text-violet-400 hover:bg-violet-400 hover:text-slate-900 hover:text-slate-900 transition glow">
       Start a Project
@@ -494,19 +624,26 @@
 
 
 <section id="about" class="max-w-5xl mx-auto py-32 px-6 fade">
-  <h2 class="text-3xl font-semibold mb-6 text-violet-400">About Me</h2>
-  <p class="text-slate-400 leading-relaxed">
-    I'm Mohamed, a software engineer focused on building clean, scalable and visually refined
-    digital products. I specialize in Laravel-based systems for real businesses, not demos.
-  </p>
+<h2 class="text-3xl font-semibold mb-6 text-violet-400 mono">
+  /* About Me */
+</h2>
+  <pre class="mono text-slate-400 leading-relaxed">
+const engineer = {
+  name: "Mohamed Ibrahim",
+  focus: ["Clean code", "Scalable systems", "Real businesses"],
+  stack: ["PHP", "Laravel", "MySQL"],
+  philosophy: "Design like an artist, build like an engineer."
+};
+</pre>
+
 </section>
 
   <div class="section-divider"></div>
 
 <section id="projects" class="max-w-6xl mx-auto py-32 px-6 fade">
-  <h2 class="text-3xl font-semibold mb-12 text-pink-400 relative">
-  Selected Projects
-  <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
+<h2 class="text-3xl font-semibold mb-12 text-pink-400 relative mono">
+  /* Selected Projects */
+    <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
 </h2>
 
 
@@ -549,9 +686,9 @@
   <div class="section-divider"></div>
 
 <section id="contact" class="py-40 text-center fade">
-  <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-    Let’s Build Something Extraordinary
-  </h2>
+  <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent mono">
+  /* Let’s Build Something Extraordinary */
+</h2>
   <p class="text-slate-400 mb-10">Have a project in mind? Let’s talk.</p>
 
   <a href="mailto:youremail@example.com"
@@ -707,7 +844,6 @@ window.addEventListener("scroll", () => {
 
 document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
 
-
   document.querySelectorAll('.social-icon').forEach(icon => {
   icon.addEventListener('mousemove', e => {
     const rect = icon.getBoundingClientRect();
@@ -721,11 +857,77 @@ document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
   });
 });
 
-  
+
+const terminalLines = [
+  "$ npm run build",
+  "✔ Compiling assets...",
+  "✔ Optimizing performance...",
+  "✔ Deploying to production...",
+  "Done in 1.24s"
+];
+
+const terminalEl = document.getElementById("terminal");
+let line = 0;
+let char = 0;
+
+function typeTerminal() {
+  if (line >= terminalLines.length) return;
+
+  const current = terminalLines[line];
+  terminalEl.textContent += current[char] || "";
+
+  char++;
+
+  if (char > current.length) {
+    terminalEl.textContent += "\n";
+    line++;
+    char = 0;
+  }
+
+  setTimeout(typeTerminal, 55);
+}
+
+setTimeout(typeTerminal, 1000);
+
+  const storyLogs = [
+  { y: 0, text: "Booting system..." },
+  { y: 400, text: "Loading profile module..." },
+  { y: 900, text: "Initializing projects engine..." },
+  { y: 1500, text: "Establishing secure connection..." }
+];
+
+let printed = new Set();
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  storyLogs.forEach(log => {
+    if (scrollY > log.y && !printed.has(log.text)) {
+      terminalEl.textContent += "\n" + log.text;
+      printed.add(log.text);
+    }
+  });
+});
+
+window.addEventListener("mousemove", e => {
+const x = (e.clientX / window.innerWidth - 0.5) * 6;
+const y = (e.clientY / window.innerHeight - 0.5) * 6;
+
+  document.querySelectorAll(".depth").forEach(el => {
+    el.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
+
+document.addEventListener("click", () => {
+  const a = document.getElementById("ambience");
+  if (a) {
+    a.volume = 0.15;
+    a.play().catch(() => {});
+  }
+}, { once: true });
+
 </script>
-
-
-
   
+<div id="vignette"></div>
 </body>
 </html>
