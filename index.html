@@ -9,7 +9,7 @@
   <meta property="og:description" content="Crafting elegant digital systems using PHP & Laravel.">
   <meta property="og:type" content="website">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
 
@@ -20,13 +20,17 @@
 
     .fade {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(40px) scale(0.96);
+      filter: blur(6px);
+      transition: opacity 1.6s ease, transform 1.6s ease, filter 1.6s ease;
     }
+    
     .fade.show {
       opacity: 1;
       transform: none;
+      filter: blur(0);
     }
+
 
     .bg-ambient {
       background:
@@ -183,7 +187,7 @@
     
     .nav-link:hover {
       color: #a78bfa;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.005em;
       transform: translateY(-2px);
     }
     
@@ -390,7 +394,230 @@
   z-index: 1;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
 
+h1, h2 {
+  font-family: 'DM Serif Display', serif;
+  letter-spacing: 0.04em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+  font-size: 0.85em;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(139,92,246,0.6);
+  animation: typing 2.8s steps(40,end), blink .8s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+pre.mono {
+  background: rgba(255,255,255,0.02);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(139,92,246,0.15);
+  transition: box-shadow 0.4s ease;
+}
+
+pre.mono:hover {
+  box-shadow: 0 0 30px rgba(139,92,246,0.35);
+}
+
+
+.terminal {
+  background: rgba(2,6,23,0.9);
+  border-radius: 1rem;
+  padding: 1.2rem 1.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #e5e7eb;
+  box-shadow: 0 0 40px rgba(139,92,246,0.35);
+  border: 1px solid rgba(139,92,246,0.25);
+  width: 360px;
+  max-width: 90vw;
+  animation: terminalPulse 10s ease-in-out infinite;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+}
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #facc15; }
+.dot.green { background: #22c55e; }
+
+.terminal-body {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-line;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.terminal-body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes terminalPulse {
+  0%,100% { box-shadow: 0 0 40px rgba(139,92,246,0.25); }
+  50%     { box-shadow: 0 0 55px rgba(139,92,246,0.45); }
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  background: #e5e7eb;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.depth {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+#vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(circle at center, transparent 70%, rgba(0,0,0,0.25));
+}
+
+.chapter {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(139,92,246,0.6);
+  margin-bottom: 1rem;
+}
+    
+#grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.035;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+.navbar-glass {
+  background: rgba(2, 6, 23, 0.65);
+  border-bottom: 1px solid rgba(139,92,246,0.25);
+  box-shadow: 0 8px 40px rgba(139,92,246,0.12);
+}
+
+.nav-brand {
+  color: #a78bfa;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  position: relative;
+}
+
+.nav-brand::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 6px;
+  background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.nav-brand:hover::after {
+  opacity: 1;
+}
+
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: lowercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: rgba(226,232,240,0.7);
+}
+
+.nav-link:hover {
+  color: #c4b5fd;
+}
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+nav-container {
+  position: relative;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+#nav-indicator {
+  position: absolute;
+  bottom: -10px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  border-radius: 999px;
+  transition: transform .4s cubic-bezier(.22,1,.36,1), width .4s cubic-bezier(.22,1,.36,1);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34,197,94,.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+.nav-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(139,92,246,0.6);
+}
+
+.navbar-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(139,92,246,0.03), transparent);
+  animation: scan 6s linear infinite;
+}
 
 
   </style>
@@ -401,23 +628,23 @@
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-violet-400 to-pink-400 z-[60]"></div>
 
 
-  <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 shadow-lg shadow-black/30 transition-all duration-500">
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl transition-all duration-500 navbar-glass">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-    <div class="flex items-center space-x-2">
-      <span class="text-violet-400 hover:text-pink-400 transition font-medium tracking-wide opacity-90">
-        Mohamed Ibrahem
-      </span>
-      <span class="text-slate-400 mx-2">·</span>
-      <span class="text-slate-400 text-xs">Software Engineer</span>
-    </div>
+    <div class="flex items-center space-x-3">
+  <span class="status-dot"></span>
+  <span class="nav-brand mono">system://mohamedibrahem</span>
+  <span class="nav-sub">online</span>
+</div>
 
 
-  <nav class="flex space-x-10 text-sm font-medium nav-enter">
-  <a href="#about" class="nav-link">About me</a>
-  <a href="#projects" class="nav-link">What I build</a>
-  <a href="#contact" class="nav-link">Let’s talk</a>
-</nav>
+
+<nav class="nav-container mono nav-enter">
+  <span id="nav-indicator"></span>
+<a href="#about" class="nav-link" data-nav>about</a>
+<a href="#projects" class="nav-link" data-nav>projects</a>
+<a href="#contact" class="nav-link" data-nav>contact</a>
+</span></nav>
 </div>
 
 </header>
@@ -432,14 +659,15 @@
 
 <section class="min-h-screen flex items-center justify-center hero-offset">
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
-    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+    <h1 class="depth text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
       Building Digital Systems That Feel Alive
     </h1>
+
     <div class="relative group">
       <div class="absolute inset-0 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-violet-400 to-pink-400"></div>
       <img src="me.jpg"
-           alt="Mohamed Ibrahem"
-           class="relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+         alt="Mohamed Ibrahem"
+         class="depth relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
     </div>
 
     <div class="flex items-center justify-center gap-6 fade">
@@ -480,9 +708,21 @@
 </div>
 
 
-    <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-      Software Engineer crafting elegant business software using PHP & Laravel.
+    <p class="mono text-slate-400 max-w-2xl mx-auto mb-10 typewriter">
+      // Crafting elegant business systems with PHP, Laravel & modern UX
     </p>
+    
+    <!-- 👇 PASTE TERMINAL HERE -->
+  <div class="terminal depth fade">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <div class="terminal-body" id="terminal"></div>
+  </div>
+  <!-- 👆 END TERMINAL -->
+    
     <a href="#contact"
        class="px-8 py-4 rounded-full border border-violet-400 text-violet-400 hover:bg-violet-400 hover:text-slate-900 hover:text-slate-900 transition glow">
       Start a Project
@@ -494,19 +734,28 @@
 
 
 <section id="about" class="max-w-5xl mx-auto py-32 px-6 fade">
-  <h2 class="text-3xl font-semibold mb-6 text-violet-400">About Me</h2>
-  <p class="text-slate-400 leading-relaxed">
-    I'm Mohamed, a software engineer focused on building clean, scalable and visually refined
-    digital products. I specialize in Laravel-based systems for real businesses, not demos.
-  </p>
+<div class="chapter">Chapter I</div>
+<h2 class="text-3xl font-semibold mb-6 text-violet-400 mono">
+  /* About Me */
+</h2>
+  <pre class="mono text-slate-400 leading-relaxed">
+const engineer = {
+  name: "Mohamed Ibrahim",
+  focus: ["Clean code", "Scalable systems", "Real businesses"],
+  stack: ["PHP", "Laravel", "MySQL"],
+  philosophy: "Design like an artist, build like an engineer."
+};
+</pre>
+
 </section>
 
   <div class="section-divider"></div>
 
 <section id="projects" class="max-w-6xl mx-auto py-32 px-6 fade">
-  <h2 class="text-3xl font-semibold mb-12 text-pink-400 relative">
-  Selected Projects
-  <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
+  <div class="chapter">Chapter II</div>
+<h2 class="text-3xl font-semibold mb-12 text-pink-400 relative mono">
+  /* Selected Projects */
+    <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
 </h2>
 
 
@@ -549,19 +798,19 @@
   <div class="section-divider"></div>
 
 <section id="contact" class="py-40 text-center fade">
-  <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-    Let’s Build Something Extraordinary
-  </h2>
+  <div class="chapter">Chapter III</div>
+  <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent mono">
+  /* Let’s Build Something Extraordinary */
+</h2>
   <p class="text-slate-400 mb-10">Have a project in mind? Let’s talk.</p>
 
-  <a href="mailto:youremail@example.com"
+  <a href="mailto:medobasha.mi@gmail.com"
      class="px-10 py-4 rounded-full border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-slate-900 transition glow">
     Contact Me
   </a>
 </section>
 
   <div class="section-divider"></div>
-
 <footer class="py-12 text-center text-slate-500 text-sm border-t border-slate-800">
   © 2025 Mohamed Ibrahem — Crafted with care.
 </footer>
@@ -707,7 +956,6 @@ window.addEventListener("scroll", () => {
 
 document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
 
-
   document.querySelectorAll('.social-icon').forEach(icon => {
   icon.addEventListener('mousemove', e => {
     const rect = icon.getBoundingClientRect();
@@ -721,9 +969,110 @@ document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
   });
 });
 
-  
-</script>
 
+const terminalLines = [
+  "$ npm run build",
+  "✔ Compiling assets...",
+  "✔ Optimizing performance...",
+  "✔ Deploying to production...",
+  "Done in 1.24s"
+];
+
+const terminalEl = document.getElementById("terminal");
+let line = 0;
+let char = 0;
+
+function typeTerminal() {
+  if (line >= terminalLines.length) return;
+
+  const current = terminalLines[line];
+  terminalEl.textContent += current[char] || "";
+
+  char++;
+
+  if (char > current.length) {
+    terminalEl.textContent += "\n";
+    line++;
+    char = 0;
+  }
+
+  setTimeout(typeTerminal, 55);
+}
+
+setTimeout(typeTerminal, 1000);
+
+  const storyLogs = [
+  { y: 0, text: "Booting system..." },
+  { y: 400, text: "Loading profile module..." },
+  { y: 900, text: "Initializing projects engine..." },
+  { y: 1500, text: "Establishing secure connection..." }
+];
+
+let printed = new Set();
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  storyLogs.forEach(log => {
+    if (scrollY > log.y && !printed.has(log.text)) {
+      terminalEl.textContent += "\n" + log.text;
+      printed.add(log.text);
+    }
+  });
+});
+
+window.addEventListener("mousemove", e => {
+const x = (e.clientX / window.innerWidth - 0.5) * 3;
+const y = (e.clientY / window.innerHeight - 0.5) * 3;
+
+  document.querySelectorAll(".depth").forEach(el => {
+    el.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
+
+document.addEventListener("click", () => {
+  const a = document.getElementById("ambience");
+  if (a) {
+    a.volume = 0.15;
+    a.play().catch(() => {});
+  }
+}, { once: true });
+
+const indicator = document.getElementById("nav-indicator");
+const navLinks = document.querySelectorAll("[data-nav]");
+
+function moveIndicator(el) {
+  const rect = el.getBoundingClientRect();
+  const parentRect = el.parentElement.getBoundingClientRect();
+
+  indicator.style.width = rect.width + "px";
+  indicator.style.transform = `translateX(${rect.left - parentRect.left}px)`;
+}
+
+navLinks.forEach(link => {
+  link.addEventListener("mouseenter", () => moveIndicator(link));
+});
+
+window.addEventListener("scroll", () => {
+  navLinks.forEach(link => {
+    const id = link.getAttribute("href");
+    const section = document.querySelector(id);
+    if (!section) return;
+
+    const top = section.offsetTop - 140;
+    const bottom = top + section.offsetHeight;
+
+    if (scrollY >= top && scrollY < bottom) {
+      moveIndicator(link);
+    }
+  });
+});
+
+
+</script>
   
+<div id="vignette"></div>
+<div id="grain"></div>
+
 </body>
 </html>
