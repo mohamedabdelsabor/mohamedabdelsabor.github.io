@@ -528,6 +528,12 @@ pre.mono:hover {
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
 }
 
+#navbar.scrolled {
+  background: rgba(2,6,23,0.92);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+
 
   </style>
 </head>
@@ -537,26 +543,42 @@ pre.mono:hover {
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-violet-400 to-pink-400 z-[60]"></div>
 
 
-  <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 shadow-lg shadow-black/30 transition-all duration-500">
+  <header id="navbar"
+  class="fixed top-0 inset-x-0 z-50 bg-slate-950/85 backdrop-blur-xl border-b border-slate-800 shadow-lg shadow-black/30 transition-all duration-500">
+
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-    <div class="flex items-center space-x-2">
-      <span class="text-violet-400 hover:text-pink-400 transition font-medium tracking-wide opacity-90">
-        Mohamed Ibrahem
-      </span>
-      <span class="text-slate-400 mx-2">·</span>
-      <span class="text-slate-400 text-xs">Software Engineer</span>
+    <!-- Left: Brand -->
+    <div class="flex items-center gap-3 mono text-sm">
+      <span class="text-violet-400 opacity-80">&gt;_</span>
+      <span class="text-slate-200 font-medium tracking-wide">Mohamed Ibrahem</span>
+      <span class="text-slate-500 text-xs hidden sm:inline">software engineer</span>
     </div>
 
+    <!-- Center: Nav -->
+    <nav class="hidden md:flex items-center gap-10 text-xs tracking-widest uppercase nav-enter">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
 
-  <nav class="flex space-x-10 text-sm font-medium nav-enter">
-  <a href="#about" class="nav-link">About me</a>
-  <a href="#projects" class="nav-link">What I build</a>
-  <a href="#contact" class="nav-link">Let’s talk</a>
-</nav>
-</div>
+    <!-- Right: CTA -->
+    <div class="flex items-center gap-4">
+      <a href="#contact"
+         class="px-5 py-2 rounded-full text-xs mono border border-violet-400 text-violet-400
+                hover:bg-violet-400 hover:text-slate-900 transition glow">
+        Hire Me
+      </a>
 
+      <!-- Mobile menu icon (optional future) -->
+      <button class="md:hidden text-slate-400 hover:text-violet-400 transition">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+  </div>
 </header>
+
 <div id="ambient-layer">
   <canvas id="particles"></canvas>
   <div id="mouse-glow"></div>
@@ -946,6 +968,13 @@ document.addEventListener("click", () => {
     a.play().catch(() => {});
   }
 }, { once: true });
+
+window.addEventListener("scroll", () => {
+  const nav = document.getElementById("navbar");
+  if (window.scrollY > 40) nav.classList.add("scrolled");
+  else nav.classList.remove("scrolled");
+});
+
 
 </script>
   
