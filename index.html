@@ -492,8 +492,6 @@ pre.mono:hover {
   gap: 0.6rem;
   color: #e5e7eb;
   text-align: center;
-  flex-direction: column; /* 👈 أهم سطر */
-
 }
 
 .hero-terminal .prompt {
@@ -511,10 +509,6 @@ pre.mono:hover {
   overflow: hidden;
   white-space: nowrap;
   animation: typing 3s steps(40, end);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 .hero-terminal .cursor {
@@ -595,36 +589,6 @@ pre.mono:hover {
   opacity: 0.85;
 }
 
-/* === HERO ONLY OVERRIDES === */
-
-.hero-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  text-align: center;
-}
-
-.hero-title .hero-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  white-space: normal;     /* override */
-  overflow: visible;      /* override */
-  animation: none;        /* نوقف typing هنا بس */
-}
-
-.hero-title .hero-text span {
-  display: block;
-}
-
-.hero-title .hero-text .sub {
-  font-size: 0.9em;
-  opacity: 0.85;
-}
-
 
 
   </style>
@@ -682,7 +646,7 @@ pre.mono:hover {
 
 <section class="min-h-screen flex items-center justify-center hero-offset">
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
-    <h1 class="hero-terminal hero-title depth mb-6">
+    <h1 class="hero-terminal depth mb-6">
   <span class="prompt">&gt;</span>
     <span class="hero-text">
   <span>Building Digital Systems</span><br>
