@@ -480,6 +480,43 @@ pre.mono:hover {
   display: none;
 }
 
+.hero-terminal {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+.hero-terminal .prompt {
+  color: #8b5cf6;
+  opacity: 0.8;
+}
+
+.hero-terminal .hero-text {
+  background: linear-gradient(to right, #a78bfa, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end);
+}
+
+.hero-terminal .cursor {
+  color: rgba(139,92,246,0.8);
+  animation: blink 1s infinite;
+  margin-left: 0.2rem;
+}
+
 @keyframes terminalPulse {
   0%,100% { box-shadow: 0 0 40px rgba(139,92,246,0.25); }
   50%     { box-shadow: 0 0 55px rgba(139,92,246,0.45); }
@@ -552,7 +589,7 @@ pre.mono:hover {
     <div class="flex items-center gap-3 mono text-sm">
       <span class="text-violet-400 opacity-80">&gt;_</span>
       <span class="text-slate-200 font-medium tracking-wide">Mohamed Ibrahem</span>
-      <span class="text-slate-500 text-xs hidden sm:inline">software engineer</span>
+      <span class="text-slate-500 text-xs hidden sm:inline">Software Engineer</span>
     </div>
 
     <!-- Center: Nav -->
@@ -590,9 +627,12 @@ pre.mono:hover {
 
 <section class="min-h-screen flex items-center justify-center hero-offset">
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
-    <h1 class="depth text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-      Building Digital Systems That Feel Alive
-    </h1>
+    <h1 class="hero-terminal depth mb-6">
+  <span class="prompt">&gt;</span>
+    <span class="hero-text">Building Digital Systems That Feel Alive</span>
+    <span class="cursor">_</span>
+  </h1>
+
 
     <div class="relative group">
       <div class="absolute inset-0 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-violet-400 to-pink-400"></div>
