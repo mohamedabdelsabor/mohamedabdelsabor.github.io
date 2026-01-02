@@ -19,9 +19,9 @@
     }
 
     .fade {
-      opacity: 0;
-      transform: translateY(40px) scale(0.96);
-      filter: blur(6px);
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
       transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
     }
     
@@ -790,9 +790,23 @@ const engineer = {
   
 <script>
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target); // عشان ما يختفيش تاني
+    }
   });
-  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.fade').forEach(el => {
+  observer.observe(el);
+
+  // لو ظاهر بالفعل وقت التحميل
+  if (el.getBoundingClientRect().top < window.innerHeight) {
+    el.classList.add("show");
+  }
+});
+
   document.querySelectorAll('.social-anim').forEach(el => observer.observe(el));
 
 
