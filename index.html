@@ -534,6 +534,25 @@ pre.mono:hover {
 }
 
 
+.light body {
+  background: #f8fafc;
+  color: #020617;
+}
+
+.light #navbar {
+  background: rgba(248,250,252,0.9);
+  border-color: #e5e7eb;
+}
+
+.light .nav-link {
+  color: #475569;
+}
+
+.light .nav-link:hover {
+  color: #7c3aed;
+}
+
+
 
   </style>
 </head>
@@ -546,31 +565,51 @@ pre.mono:hover {
   <header id="navbar"
   class="fixed top-0 inset-x-0 z-50 bg-slate-950/85 backdrop-blur-xl border-b border-slate-800 shadow-lg shadow-black/30 transition-all duration-500">
 
+  <!-- Progress -->
+  <div id="nav-progress"
+       class="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-violet-400 to-pink-400 w-0"></div>
+
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
     <!-- Left: Brand -->
     <div class="flex items-center gap-3 mono text-sm">
       <span class="text-violet-400 opacity-80">&gt;_</span>
       <span class="text-slate-200 font-medium tracking-wide">Mohamed Ibrahem</span>
-      <span class="text-slate-500 text-xs hidden sm:inline">software engineer</span>
+      <span class="text-slate-500 text-xs hidden sm:inline">Software Engineer</span>
     </div>
 
-    <!-- Center: Nav -->
-    <nav class="hidden md:flex items-center gap-10 text-xs tracking-widest uppercase nav-enter">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
+    <!-- Center: Breadcrumb + Nav -->
+    <div class="hidden md:flex items-center gap-10">
 
-    <!-- Right: CTA -->
-    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 text-xs mono text-slate-400">
+        <span class="opacity-50">/</span>
+        <span id="breadcrumb">home</span>
+      </div>
+
+      <nav class="flex items-center gap-8 text-xs tracking-widest uppercase nav-enter">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+    </div>
+
+    <!-- Right: Controls -->
+    <div class="flex items-center gap-3">
+
+      <!-- Theme toggle -->
+      <button id="themeToggle"
+        class="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center
+               text-slate-400 hover:text-violet-400 hover:border-violet-400 transition">
+        <i data-lucide="sun" class="w-4 h-4"></i>
+      </button>
+
       <a href="#contact"
          class="px-5 py-2 rounded-full text-xs mono border border-violet-400 text-violet-400
                 hover:bg-violet-400 hover:text-slate-900 transition glow">
         Hire Me
       </a>
 
-      <!-- Mobile menu icon (optional future) -->
       <button class="md:hidden text-slate-400 hover:text-violet-400 transition">
         <i data-lucide="menu"></i>
       </button>
@@ -578,6 +617,7 @@ pre.mono:hover {
 
   </div>
 </header>
+
 
 <div id="ambient-layer">
   <canvas id="particles"></canvas>
@@ -975,6 +1015,38 @@ window.addEventListener("scroll", () => {
   else nav.classList.remove("scrolled");
 });
 
+// Progress bar
+window.addEventListener("scroll", () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (window.scrollY / h) * 100;
+  document.getElementById("nav-progress").style.width = scrolled + "%";
+});
+
+// Breadcrumb
+const sections = document.querySelectorAll("section[id]");
+const breadcrumb = document.getElementById("breadcrumb");
+
+window.addEventListener("scroll", () => {
+  let current = "home";
+  sections.forEach(sec => {
+    if (scrollY >= sec.offsetTop - 150) {
+      current = sec.id;
+    }
+  });
+  breadcrumb.textContent = current;
+});
+
+// Theme toggle
+const toggle = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+toggle.addEventListener("click", () => {
+  root.classList.toggle("light");
+  toggle.innerHTML = root.classList.contains("light")
+    ? '<i data-lucide="moon" class="w-4 h-4"></i>'
+    : '<i data-lucide="sun" class="w-4 h-4"></i>';
+  lucide.createIcons();
+});
 
 </script>
   
