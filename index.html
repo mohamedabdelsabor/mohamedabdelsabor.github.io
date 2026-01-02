@@ -820,18 +820,29 @@ const engineer = {
 <script src="https://unpkg.com/lucide@latest"></script>
   
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
-  });
-  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-  document.querySelectorAll('.social-anim').forEach(el => observer.observe(el));
-
-document.querySelectorAll('.fade').forEach(el => {
-  observer.observe(el);
-  if (el.getBoundingClientRect().top < window.innerHeight) {
-    el.classList.add('show');
+  const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "0px 0px -10% 0px"
+  }
+);
+    document.querySelectorAll(".fade").forEach(el => {
+  if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+    el.classList.add("show");
   }
 });
+
+
+  document.querySelectorAll(".fade, .social-anim").forEach(el => observer.observe(el));
+
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let w, h, particles = [];
