@@ -492,6 +492,8 @@ pre.mono:hover {
   gap: 0.6rem;
   color: #e5e7eb;
   text-align: center;
+  flex-direction: column; /* 👈 أهم سطر */
+
 }
 
 .hero-terminal .prompt {
@@ -509,6 +511,10 @@ pre.mono:hover {
   overflow: hidden;
   white-space: nowrap;
   animation: typing 3s steps(40, end);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-terminal .cursor {
