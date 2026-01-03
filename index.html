@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Mohamed Ibrahem — Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Mohamed Ibrahim — Software Engineer specializing in Laravel, PHP, and scalable business systems.">
-  <meta property="og:title" content="Mohamed Ibrahim — Software Engineer">
+  <meta name="description" content="Mohamed Ibrahem — Software Engineer specializing in Laravel, PHP, and scalable business systems.">
+  <meta property="og:title" content="Mohamed Ibrahem — Software Engineer">
   <meta property="og:description" content="Crafting elegant digital systems using PHP & Laravel.">
   <meta property="og:type" content="website">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -648,9 +648,8 @@ pre.mono:hover {
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
     <h1 class="hero-terminal depth mb-6">
   <span class="prompt">&gt;</span>
-    <span class="hero-text">
-  <span>Building Digital Systems Feeling Alive</span><br>
-    </span>
+    <span class="hero-text" id="hero-text"></span>
+
     <span class="cursor">_</span>
   </h1>
 
@@ -732,7 +731,7 @@ pre.mono:hover {
 </h2>
   <pre class="mono text-slate-400 leading-relaxed">
 const engineer = {
-  name: "Mohamed Ibrahim",
+  name: "Mohamed Ibrahem",
   focus: ["Clean code", "Scalable systems", "Real businesses"],
   stack: ["PHP", "Laravel", "MySQL"],
   philosophy: "Design like an artist, build like an engineer."
@@ -1127,6 +1126,43 @@ window.addEventListener("scroll", () => {
   if (window.scrollY > 40) nav.classList.add("scrolled");
   else nav.classList.remove("scrolled");
 });
+
+const heroTexts = [
+  "Building Digital Systems Feeling Alive",
+  "Crafting Scalable Laravel Platforms",
+  "Designing Software With Soul",
+  "Turning Business Logic Into Elegant Code"
+];
+
+const heroEl = document.getElementById("hero-text");
+
+let heroIndex = 0;
+let heroChar = 0;
+let typing = true;
+
+function typeHero() {
+  const current = heroTexts[heroIndex];
+
+  if (typing) {
+    heroEl.textContent = current.slice(0, heroChar++);
+    if (heroChar > current.length) {
+      typing = false;
+      setTimeout(typeHero, 1600); // pause after typing
+      return;
+    }
+  } else {
+    heroEl.textContent = current.slice(0, heroChar--);
+    if (heroChar < 0) {
+      typing = true;
+      heroIndex = (heroIndex + 1) % heroTexts.length;
+      heroChar = 0;
+    }
+  }
+
+  setTimeout(typeHero, typing ? 70 : 40);
+}
+
+typeHero();
 
 
 </script>
