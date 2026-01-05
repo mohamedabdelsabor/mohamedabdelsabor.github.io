@@ -618,33 +618,6 @@ html, body {
   }
 }
 
-.trust-anim {
-  opacity: 0;
-  transform: translateY(30px) scale(0.97);
-  filter: blur(6px);
-  transition: all 1.2s ease;
-}
-
-.trust-anim.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
-
-.trust-anim::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%);
-  opacity: 0;
-  transition: opacity 1s ease;
-  pointer-events: none;
-}
-
-.trust-anim.show::after {
-  opacity: 0.15;
-}
-
 
   </style>
 </head>
@@ -798,12 +771,11 @@ const engineer = {
 
 </section>
 
-<div class="max-w-5xl mx-auto text-center mt-16 trust-anim">
-  <p class="text-slate-400 text-sm mono tracking-wide">
+<div class="max-w-5xl mx-auto text-center mt-12 fade">
+  <p class="text-slate-500 text-sm mono tracking-wide opacity-80">
     Trusted by clinics, retailers and growing businesses across Egypt.
   </p>
 </div>
-
 
 
 
@@ -1363,18 +1335,6 @@ function typeHero() {
 }
 
 typeHero();
-
-
-  const trustObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      trustObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.4 });
-
-document.querySelectorAll(".trust-anim").forEach(el => trustObserver.observe(el));
 
 
 </script>
