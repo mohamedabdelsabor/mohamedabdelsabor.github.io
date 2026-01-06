@@ -41,6 +41,15 @@
       animation: scrollLeft 120s linear infinite;
       will-change: transform;
     }
+
+    .projects-wrapper {
+      cursor: grab;
+    }
+    
+    .projects-wrapper.dragging {
+      cursor: grabbing;
+    }
+
     
     
     
@@ -1203,7 +1212,7 @@ const engineer = {
 
   <div class="section-divider"></div>
 
-<section id="contact" class="py-40 text-center fade">
+<section id="contact" class="py-24 text-center fade">
   <div class="chapter">Chapter III</div>
   <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent mono">
   /* Let’s Build Something Extraordinary */
@@ -1217,7 +1226,7 @@ const engineer = {
 </section>
 
   <div class="section-divider"></div>
-<footer class="py-12 text-center text-slate-500 text-sm border-t border-slate-800">
+<footer class="py-6 text-center text-slate-500 text-sm border-t border-slate-800">
   © 2025 Mohamed Ibrahem — Crafted with care.
 </footer>
 
@@ -1498,6 +1507,58 @@ const slideObserver = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".slide-anim").forEach(el => slideObserver.observe(el));
 
+
+
+  // =======================
+// Drag to slide Projects
+// =======================
+const wrapper = document.querySelector(".projects-wrapper");
+const track = document.querySelector(".projects-track");
+
+let isDown = false;
+let startX = 0;
+let currentTranslate = 0;
+
+wrapper.addEventListener("mousedown", e => {
+  isDown = true;
+  wrapper.classList.add("dragging");
+  startX = e.clientX;
+  track.style.animationPlayState = "paused";
+});
+
+window.addEventListener("mouseup", () => {
+  if (!isDown) return;
+  isDown = false;
+  wrapper.classList.remove("dragging");
+
+  const matrix = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+  currentTranslate = matrix.m41;
+
+  track.style.animationPlayState = "running";
+});
+
+window.addEventListener("mousemove", e => {
+  if (!isDown) return;
+  const dx = e.clientX - startX;
+  track.style.transform = `translateX(${currentTranslate + dx}px)`;
+});
+
+wrapper.addEventListener("touchstart", e => {
+  isDown = true;
+  startX = e.touches[0].clientX;
+  track.style.animationPlayState = "paused";
+});
+
+wrapper.addEventListener("touchend", () => {
+  isDown = false;
+  track.style.animationPlayState = "running";
+});
+
+wrapper.addEventListener("touchmove", e => {
+  if (!isDown) return;
+  const dx = e.touches[0].clientX - startX;
+  track.style.transform = `translateX(${currentTranslate + dx}px)`;
+});
 
 </script>
   
