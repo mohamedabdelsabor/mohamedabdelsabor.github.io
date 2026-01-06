@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8" />
   <title>Mohamed Ibrahem — Software Engineer</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -48,27 +48,6 @@
       opacity: 1;
       transform: translateX(0);
     }
-    
-        /* Infinite cinematic scroll */
-   .projects-track {
-      display: flex;
-      gap: 2.5rem;
-      width: max-content;
-      will-change: transform;
-    }
-
-    .projects-wrapper {
-      cursor: grab;
-    }
-    
-    .projects-wrapper.dragging {
-      cursor: grabbing;
-    }
-
-    
-    
-    
-    
 
 
     .glow {
@@ -120,6 +99,20 @@
       filter: blur(60px);
       transform: translate(-50%, -50%);
       z-index: 0;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(139,92,246,0.3);
+      color: #94a3b8;
+      transition: all .3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: #fff;
+      background: linear-gradient(to right, #8b5cf6, #ec4899);
+      border-color: transparent;
     }
 
     .orb {
@@ -195,9 +188,7 @@
     
     .project-card {
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      min-width: 340px;
-      max-width: 340px;
-      flex-shrink: 0;
+        width: 100%;
     }
     
     .project-card:hover {
@@ -205,12 +196,6 @@
       box-shadow: 0 30px 80px rgba(34,197,94,0.12);
     }
 
-    @media (max-width: 768px) {
-      .project-card {
-        min-width: 280px;
-        max-width: 280px;
-      }
-    }
 
 
 
@@ -748,7 +733,7 @@ pre.mono:hover {
     <!-- Right: CTA -->
     <div class="flex items-center gap-4">
   <a href="https://wa.me/201064061048?text=Hello%20Mohamed%20I%20want%20to%20start%20a%20project%20with%20you"
-     target="_blank"
+     target="_blank" rel="noopener noreferrer"
      class="hire-btn px-5 py-2 rounded-full text-xs mono border border-emerald-400 text-emerald-400
             hover:bg-emerald-400 hover:text-slate-900 transition glow flex items-center gap-2">
     <i data-lucide="phone-call" class="w-4 h-4"></i>
@@ -765,6 +750,7 @@ pre.mono:hover {
   </div>
 </header>
 
+<main>
 <div id="ambient-layer">
   <canvas id="particles"></canvas>
   <div id="mouse-glow"></div>
@@ -772,8 +758,6 @@ pre.mono:hover {
   <div class="orb blue parallax" data-speed="0.2"></div>
 </div>
 
-
-<br>
 <section class="min-h-screen flex items-center justify-center hero-offset">
   <div class="fade hero-float flex flex-col items-center text-center space-y-10">
     <h1 class="hero-terminal depth mb-6">
@@ -786,29 +770,29 @@ pre.mono:hover {
 
     <div class="relative group">
       <div class="absolute inset-0 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-violet-400 to-pink-400"></div>
-      <img src="me.jpg"
+      <img src="me.jpg" loading="lazy"
          alt="Mohamed Ibrahem"
          class="depth relative w-44 h-44 md:w-52 md:h-52 rounded-full object-cover glass border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105" />
     </div>
 
     <div class="flex items-center justify-center gap-6 fade">
 
-  <a href="https://www.linkedin.com/in/mohamed-ibrahemm/" target="_blank"
+  <a href="https://www.linkedin.com/in/mohamed-ibrahemm/" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="LinkedIn" data-brand="linkedin">
     <i data-lucide="linkedin" class="w-5 h-5"></i>
   </a>
 
-  <a href="https://x.com/medo_abdelsabor" target="_blank"
+  <a href="https://x.com/medo_abdelsabor" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="X" data-brand="twitter">
     <i data-lucide="twitter" class="w-5 h-5"></i>
   </a>
 
-  <a href="https://github.com/mohamedabdelsabor" target="_blank"
+  <a href="https://github.com/mohamedabdelsabor" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="GitHub" data-brand="github">
     <i data-lucide="github" class="w-5 h-5"></i>
   </a>
 
-  <a href="https://www.kaggle.com/mohamedabdelsabor" target="_blank"
+  <a href="https://www.kaggle.com/mohamedabdelsabor" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="Kaggle" data-brand="kaggle">
     <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor">
       <path d="M16.7 6.3c-.7 0-1.2.5-1.2 1.2v17c0 .7.5 1.2 1.2 1.2s1.2-.5 1.2-1.2v-17c0-.7-.5-1.2-1.2-1.2z"/>
@@ -816,12 +800,12 @@ pre.mono:hover {
     </svg>
   </a>
 
-  <a href="https://www.facebook.com/Medoabdelsabour/" target="_blank"
+  <a href="https://www.facebook.com/Medoabdelsabour/" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="Facebook" data-brand="facebook">
     <i data-lucide="facebook" class="w-5 h-5"></i>
   </a>
 
-  <a href="https://www.instagram.com/medoibrahemm/" target="_blank"
+  <a href="https://www.instagram.com/medoibrahemm/" target="_blank" rel="noopener noreferrer"
      class="social-icon group social-anim" aria-label="Instagram" data-brand="instagram">
     <i data-lucide="instagram" class="w-5 h-5"></i>
   </a>
@@ -845,7 +829,7 @@ pre.mono:hover {
   <!-- 👆 END TERMINAL -->
     
    <a href="https://wa.me/201064061048?text=Hello%20Mohamed%20I%20want%20to%20start%20a%20project%20with%20you"
-   target="_blank"
+   target="_blank" rel="noopener noreferrer"
    class="hire-btn px-9 py-4 rounded-full border border-emerald-400 text-emerald-400 
           hover:bg-emerald-400 hover:text-slate-900 transition glow flex items-center gap-3 text-sm md:text-base">
   <i data-lucide="phone-call" class="w-5 h-5"></i>
@@ -884,327 +868,176 @@ const engineer = {
     <span class="absolute inset-0 blur-2xl opacity-20 bg-pink-400"></span>
 </h2>
 
-<p class="text-xs mono text-slate-500 mb-6 opacity-70">
-  ← drag to explore →
-</p>
 
-<div class="projects-wrapper overflow-hidden relative">
-  <div class="projects-track">
-
-  <!-- Card 1 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-emerald-400">Live</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-violet-400/10 to-pink-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-violet-400/10 text-violet-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="stethoscope" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Clinic Management System</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · Charts</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Appointment scheduling, patient records, billing and operational dashboards built for real clinics.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Full-stack</span>
-      <a href="#" class="flex items-center gap-1 text-violet-400 hover:text-pink-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-pink-400">Live</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-pink-400/10 text-pink-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="smartphone" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Mobile Shop CRM</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · POS</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Sales tracking, inventory management, staff accounts and daily profit dashboards for retail stores.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Full-stack</span>
-      <a href="#" class="flex items-center gap-1 text-pink-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-yellow-400">Internal</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="layers" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Internal ERP Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · RBAC</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Role-based access, operational reports and internal workflows to support business teams.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Architect</span>
-      <a href="#" class="flex items-center gap-1 text-yellow-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-fuchsia-400">Analytics</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-fuchsia-400/10 text-fuchsia-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Business Intelligence Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Data · Dashboards · KPIs · Forecasting · ETL</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Analytics platform for aggregating business data, visualizing KPIs, generating executive dashboards and enabling data-driven decision making across teams.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Platform Engineer</span>
-      <a href="#" class="flex items-center gap-1 text-fuchsia-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-sky-400">SaaS</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-sky-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-sky-400/10 text-sky-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="cloud" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Logistics & Operations SaaS Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Cloud · Multi-Tenant · APIs · Events · Queues · Observability</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Cloud-native SaaS platform for logistics and operations with multi-tenant architecture, event-driven workflows, real-time shipment tracking and automated billing.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Cloud Architect</span>
-      <a href="#" class="flex items-center gap-1 text-sky-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-indigo-400">AI</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-indigo-400/10 text-indigo-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">AI Automation Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">LLMs · Workflows · Agents · Integrations</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      AI-driven automation system for customer support, document processing and internal workflows using large language models and event pipelines.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: AI Engineer</span>
-      <a href="#" class="flex items-center gap-1 text-indigo-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-   <!-- new rows -->
-  <!-- Card 1 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-emerald-400">Live</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-violet-400/10 to-pink-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-violet-400/10 text-violet-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="stethoscope" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Clinic Management System</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · Charts</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Appointment scheduling, patient records, billing and operational dashboards built for real clinics.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Full-stack</span>
-      <a href="#" class="flex items-center gap-1 text-violet-400 hover:text-pink-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-pink-400">Live</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-pink-400/10 text-pink-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="smartphone" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Mobile Shop CRM</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · POS</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Sales tracking, inventory management, staff accounts and daily profit dashboards for retail stores.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Full-stack</span>
-      <a href="#" class="flex items-center gap-1 text-pink-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-yellow-400">Internal</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="layers" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Internal ERP Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · RBAC</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Role-based access, operational reports and internal workflows to support business teams.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Architect</span>
-      <a href="#" class="flex items-center gap-1 text-yellow-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-fuchsia-400">Analytics</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-fuchsia-400/10 text-fuchsia-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Business Intelligence Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Data · Dashboards · KPIs · Forecasting · ETL</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Analytics platform for aggregating business data, visualizing KPIs, generating executive dashboards and enabling data-driven decision making across teams.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Platform Engineer</span>
-      <a href="#" class="flex items-center gap-1 text-fuchsia-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-sky-400">SaaS</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-sky-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-sky-400/10 text-sky-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="cloud" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Logistics & Operations SaaS Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">Cloud · Multi-Tenant · APIs · Events · Queues · Observability</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      Cloud-native SaaS platform for logistics and operations with multi-tenant architecture, event-driven workflows, real-time shipment tracking and automated billing.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: Cloud Architect</span>
-      <a href="#" class="flex items-center gap-1 text-sky-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim">
-    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-indigo-400">AI</span>
-    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-violet-400/10"></div>
-    </div>
-    <div class="flex items-start gap-4 mb-5 relative z-10">
-      <span class="p-3 rounded-xl bg-indigo-400/10 text-indigo-400 group-hover:scale-110 transition icon-fade">
-        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
-      </span>
-      <div>
-        <h3 class="text-lg font-semibold text-slate-200 leading-snug">AI Automation Platform</h3>
-        <p class="text-xs mono text-slate-500 mt-1">LLMs · Workflows · Agents · Integrations</p>
-      </div>
-    </div>
-    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
-      AI-driven automation system for customer support, document processing and internal workflows using large language models and event pipelines.
-    </p>
-    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
-      <span>Role: AI Engineer</span>
-      <a href="#" class="flex items-center gap-1 text-indigo-400 hover:text-violet-400 transition">
-        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
+<div class="flex gap-4 mb-10 mono text-xs">
+  <button class="filter-btn active" data-filter="all"  aria-pressed="true">All</button>
+  <button class="filter-btn" data-filter="saas"  aria-pressed="false">SaaS</button>
+  <button class="filter-btn" data-filter="ai"  aria-pressed="false">AI</button>
+  <button class="filter-btn" data-filter="internal"  aria-pressed="false">Internal</button>
+  <button class="filter-btn" data-filter="business" aria-pressed="false">Business</button>
 
 </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+
+  <!-- Card 1 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden reveal-anim" data-type="saas">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-emerald-400">Live</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-violet-400/10 to-pink-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-violet-400/10 text-violet-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="stethoscope" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Clinic Management System</h3>
+        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · Charts</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      Appointment scheduling, patient records, billing and operational dashboards built for real clinics.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: Full-stack</span>
+      <a href="#" class="flex items-center gap-1 text-violet-400 hover:text-pink-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden reveal-anim" data-type="saas">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-pink-400">Live</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-violet-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-pink-400/10 text-pink-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="smartphone" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Mobile Shop CRM</h3>
+        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · POS</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      Sales tracking, inventory management, staff accounts and daily profit dashboards for retail stores.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: Full-stack</span>
+      <a href="#" class="flex items-center gap-1 text-pink-400 hover:text-violet-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim" data-type="internal">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-yellow-400">Internal</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-violet-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="layers" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Internal ERP Platform</h3>
+        <p class="text-xs mono text-slate-500 mt-1">Laravel · MySQL · RBAC</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      Role-based access, operational reports and internal workflows to support business teams.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: Architect</span>
+      <a href="#" class="flex items-center gap-1 text-yellow-400 hover:text-violet-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim" data-type="business">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-fuchsia-400">Analytics</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400/10 to-violet-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-fuchsia-400/10 text-fuchsia-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Business Intelligence Platform</h3>
+        <p class="text-xs mono text-slate-500 mt-1">Data · Dashboards · KPIs · Forecasting · ETL</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      Analytics platform for aggregating business data, visualizing KPIs, generating executive dashboards and enabling data-driven decision making across teams.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: Platform Engineer</span>
+      <a href="#" class="flex items-center gap-1 text-fuchsia-400 hover:text-violet-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim" data-type="ai">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-sky-400">SaaS</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-sky-400/10 to-violet-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-sky-400/10 text-sky-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="cloud" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">Logistics & Operations SaaS Platform</h3>
+        <p class="text-xs mono text-slate-500 mt-1">Cloud · Multi-Tenant · APIs · Events · Queues · Observability</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      Cloud-native SaaS platform for logistics and operations with multi-tenant architecture, event-driven workflows, real-time shipment tracking and automated billing.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: Cloud Architect</span>
+      <a href="#" class="flex items-center gap-1 text-sky-400 hover:text-violet-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="project-card glass neon tilt border border-slate-800 rounded-2xl p-8 group relative overflow-hidden slide-anim" data-type="saas">
+    <span class="absolute top-4 right-4 text-[10px] mono uppercase tracking-widest text-indigo-400">AI</span>
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-violet-400/10"></div>
+    </div>
+    <div class="flex items-start gap-4 mb-5 relative z-10">
+      <span class="p-3 rounded-xl bg-indigo-400/10 text-indigo-400 group-hover:scale-110 transition icon-fade">
+        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+      </span>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 leading-snug">AI Automation Platform</h3>
+        <p class="text-xs mono text-slate-500 mt-1">LLMs · Workflows · Agents · Integrations</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 leading-relaxed relative z-10 mb-6">
+      AI-driven automation system for customer support, document processing and internal workflows using large language models and event pipelines.
+    </p>
+    <div class="flex items-center justify-between text-xs mono text-slate-500 relative z-10">
+      <span>Role: AI Engineer</span>
+      <a href="#" class="flex items-center gap-1 text-indigo-400 hover:text-violet-400 transition">
+        View case <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+ </div> <!-- grid -->
+
 
 
   <div class="section-divider"></div>
@@ -1221,8 +1054,8 @@ const engineer = {
     Contact Me
   </a>
 </section>
-
-  <div class="section-divider"></div>
+  
+</main>
 <footer class="py-6 text-center text-slate-500 text-sm border-t border-slate-800">
   © 2025 Mohamed Ibrahem — Crafted with care.
 </footer>
@@ -1230,426 +1063,213 @@ const engineer = {
 <script src="https://unpkg.com/lucide@latest"></script>
   
 <script>
+(() => {
 
-  const isMobile = window.matchMedia("(pointer: coarse)").matches;
+  const qs = s => document.querySelector(s);
+  const qsa = s => document.querySelectorAll(s);
+
+  const isMobile = matchMedia("(pointer: coarse)").matches;
   const particleCount = isMobile ? 30 : 80;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
-  });
-  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-  document.querySelectorAll('.social-anim').forEach(el => observer.observe(el));
-
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-let w, h;
-let particles = [];
-
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", () => {
-  resize();
-  initParticles();
-});
-resize();
-
-function initParticles() {
-  particles = [];
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 2 + 1,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      hue: Math.random() * 60 + 140
-    });
-  }
-}
-
-initParticles();
-
-function draw() {
-  ctx.clearRect(0, 0, w, h);
-  for (let p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-
-    ctx.beginPath();
-    ctx.fillStyle = `hsla(${p.hue},80%,60%,0.15)`;
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  requestAnimationFrame(draw);
-}
-
-if (!isMobile) draw();
-
-
-const glow = document.getElementById("mouse-glow");
-
-window.addEventListener("mousemove", e => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-
-const parallax = document.querySelectorAll('.parallax');
-
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  parallax.forEach(el => {
-    const speed = el.dataset.speed;
-    el.style.transform = `translateY(${scrollY * speed}px)`;
-  });
-});
-
-document.querySelectorAll('.tilt').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rx = ((y / rect.height) - 0.5) * 12;
-    const ry = ((x / rect.width) - 0.5) * -12;
-
-    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-    card.style.setProperty('--x', `${x}px`);
-    card.style.setProperty('--y', `${y}px`);
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-  });
-});
-
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-});
-
-    let lastScroll = 0;
-    const navbar = document.getElementById("navbar");
-    
-    window.addEventListener("scroll", () => {
-      const currentScroll = window.scrollY;
-    
-      if (currentScroll > lastScroll && currentScroll > 150) {
-        navbar.classList.add("-translate-y-full");
-      } else {
-        navbar.classList.remove("-translate-y-full");
+  /* ===== Reveal Animations ===== */
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        revealObserver.unobserve(e.target);
       }
-    
-      lastScroll = currentScroll;
     });
+  }, { threshold: 0.2 });
 
-  const progress = document.getElementById("scroll-progress");
-window.addEventListener("scroll", () => {
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  const scrolled = (window.scrollY / h) * 100;
-  progress.style.width = scrolled + "%";
-});
+  qsa('.fade, .social-anim, .icon-fade, .slide-anim, .reveal-anim')
+    .forEach(el => revealObserver.observe(el));
 
+  /* ===== Particles ===== */
+  const canvas = qs('#particles');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
 
- lucide.createIcons();
-
-    const iconObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      iconObserver.unobserve(entry.target);
+    function resize() {
+      w = canvas.width = innerWidth;
+      h = canvas.height = innerHeight;
     }
-  });
-}, { threshold: 0.4 });
 
-document.querySelectorAll('.icon-fade').forEach(el => iconObserver.observe(el));
+    function init() {
+      particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        hue: Math.random() * 60 + 140
+      }));
+    }
 
-  document.querySelectorAll('.social-icon').forEach(icon => {
-  icon.addEventListener('mousemove', e => {
-    const rect = icon.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    icon.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.12)`;
-  });
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue},80%,60%,0.15)`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
 
-  icon.addEventListener('mouseleave', () => {
-    icon.style.transform = 'translate(0,0) scale(1)';
-  });
-});
-
-
-const terminalLines = [
-  "$ npm run build",
-  "✔ Compiling assets...",
-  "✔ Optimizing performance...",
-  "✔ Deploying to production...",
-  "Done in 1.24s"
-];
-
-const terminalEl = document.getElementById("terminal");
-let line = 0;
-let char = 0;
-
-function typeTerminal() {
-  if (line >= terminalLines.length) return;
-
-  const current = terminalLines[line];
-  terminalEl.textContent += current[char] || "";
-
-  char++;
-
-  if (char > current.length) {
-    terminalEl.textContent += "\n";
-    line++;
-    char = 0;
+    resize(); init();
+    addEventListener('resize', () => { resize(); init(); });
+    if (!isMobile) draw();
   }
 
-  setTimeout(typeTerminal, 55);
-}
-
-setTimeout(typeTerminal, 1000);
-
-  const storyLogs = [
-  { y: 0, text: "Booting system..." },
-  { y: 400, text: "Loading profile module..." },
-  { y: 900, text: "Initializing projects engine..." },
-  { y: 1500, text: "Establishing secure connection..." }
-];
-
-let printed = new Set();
-
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  storyLogs.forEach(log => {
-    if (scrollY > log.y && !printed.has(log.text)) {
-      terminalEl.textContent += "\n" + log.text;
-      printed.add(log.text);
-    }
-  });
-});
-
-window.addEventListener("mousemove", e => {
-const x = (e.clientX / window.innerWidth - 0.5) * 6;
-const y = (e.clientY / window.innerHeight - 0.5) * 6;
-
-  document.querySelectorAll(".depth").forEach(el => {
-    el.style.transform = `translate(${x}px, ${y}px)`;
-  });
-});
-
-document.addEventListener("click", () => {
-  const a = document.getElementById("ambience");
-  if (a) {
-    a.volume = 0.15;
-    a.play().catch(() => {});
-  }
-}, { once: true });
-
-window.addEventListener("scroll", () => {
-  const nav = document.getElementById("navbar");
-  if (window.scrollY > 40) nav.classList.add("scrolled");
-  else nav.classList.remove("scrolled");
-});
-
-const heroTexts = [
-  "Building Digital Systems Feeling Alive",
-  "Crafting Scalable Laravel Platforms",
-  "Designing Software With Soul",
-  "Turning Business Logic Into Elegant Code"
-];
-
-const heroEl = document.getElementById("hero-text");
-
-let heroIndex = 0;
-let heroChar = 0;
-let typing = true;
-
-function typeHero() {
-  const current = heroTexts[heroIndex];
-
-  if (typing) {
-    heroEl.textContent = current.slice(0, heroChar++);
-    if (heroChar > current.length) {
-      typing = false;
-      setTimeout(typeHero, 1600); // pause after typing
-      return;
-    }
-  } else {
-    heroEl.textContent = current.slice(0, heroChar--);
-    if (heroChar < 0) {
-      typing = true;
-      heroIndex = (heroIndex + 1) % heroTexts.length;
-      heroChar = 0;
-    }
+  /* ===== Mouse Glow ===== */
+  const glow = qs('#mouse-glow');
+  if (glow) {
+    addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
+    });
   }
 
-  setTimeout(typeHero, typing ? 70 : 40);
-}
-
-typeHero();
-
-const slideObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      slideObserver.unobserve(entry.target);
-    }
+  /* ===== Parallax ===== */
+  qsa('.parallax').forEach(el => {
+    const speed = parseFloat(el.dataset.speed || 0.15);
+    addEventListener('scroll', () => {
+      el.style.transform = `translateY(${scrollY * speed}px)`;
+    });
   });
-}, { threshold: 0.2 });
 
-document.querySelectorAll(".slide-anim").forEach(el => slideObserver.observe(el));
+  /* ===== Tilt ===== */
+  qsa('.tilt').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      const rx = ((y / r.height) - 0.5) * 12;
+      const ry = ((x / r.width) - 0.5) * -12;
+      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      card.style.setProperty('--x', x + 'px');
+      card.style.setProperty('--y', y + 'px');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 
+  /* ===== Navbar + Scroll ===== */
+  const navbar = qs('#navbar');
+  const progress = qs('#scroll-progress');
+  const sections = qsa('section[id]');
+  const navLinks = qsa('.nav-link');
+  let lastScroll = 0;
 
+  addEventListener('scroll', () => {
+    const y = scrollY;
 
-  // =======================
-// Drag to slide Projects
-// =======================
-// =======================
-// Drag to slide Projects (fixed)
-// =======================
-const wrapper = document.querySelector(".projects-wrapper");
-const track = document.querySelector(".projects-track");
-
-let isDown = false;
-let startX = 0;
-let startTranslate = 0;
-let autoX = 0;
-let direction = -1;
-
-
-let userInteracted = false;
-
-wrapper.addEventListener("mousedown", () => userInteracted = true);
-wrapper.addEventListener("touchstart", () => userInteracted = true);
-
-// Auto scroll
-function autoScroll() {
-  if (!isDown && !userInteracted) {
-    const AUTO_SPEED = 0.12;
-    autoX += direction * AUTO_SPEED;
-
-
-    const trackWidth = track.scrollWidth;
-    const wrapperWidth = wrapper.offsetWidth;
-
-    if (autoX < -(trackWidth - wrapperWidth)) {
-      direction = 1; // reverse right
+    if (navbar) {
+      navbar.classList.toggle('-translate-y-full', y > lastScroll && y > 150);
+      navbar.classList.toggle('scrolled', y > 40);
     }
 
-    if (autoX > 0) {
-      direction = -1; // reverse left
+    if (progress) {
+      const h = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = (y / h * 100) + '%';
     }
 
-    track.style.transform = `translateX(${autoX}px)`;
+    let current = '';
+    sections.forEach(s => { if (y >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+
+    lastScroll = y;
+  });
+
+  /* ===== Filters ===== */
+  const filterBtns = qsa('.filter-btn');
+  const cards = qsa('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
+
+      const type = btn.dataset.filter;
+      cards.forEach(c => {
+        c.style.display = (type === 'all' || c.dataset.type === type) ? 'block' : 'none';
+      });
+    });
+  });
+
+  /* ===== Hero Typing ===== */
+  const heroTexts = [
+    "Building Digital Systems Feeling Alive",
+    "Crafting Scalable Laravel Platforms",
+    "Designing Software With Soul",
+    "Turning Business Logic Into Elegant Code"
+  ];
+
+  const heroEl = qs('#hero-text');
+  let hi = 0, hc = 0, typing = true;
+
+  function typeHero() {
+    if (!heroEl) return;
+    const t = heroTexts[hi];
+
+    if (typing) {
+      heroEl.textContent = t.slice(0, ++hc);
+      if (hc === t.length) { typing = false; return setTimeout(typeHero, 1600); }
+    } else {
+      heroEl.textContent = t.slice(0, --hc);
+      if (hc === 0) { typing = true; hi = (hi+1)%heroTexts.length; }
+    }
+    setTimeout(typeHero, typing ? 70 : 40);
   }
-  requestAnimationFrame(autoScroll);
-}
+  typeHero();
 
-autoScroll();
+  /* ===== Terminal ===== */
+  const terminalEl = qs('#terminal');
+  if (terminalEl) {
+    const lines = [
+      "$ npm run build",
+      "✔ Compiling assets...",
+      "✔ Optimizing performance...",
+      "✔ Deploying to production...",
+      "Done in 1.24s"
+    ];
+    let l = 0, c = 0;
 
-wrapper.addEventListener("mousedown", e => {
-  isDown = true;
-  wrapper.classList.add("dragging");
-  startX = e.clientX;
-  startTranslate = autoX;
-});
+    function typeTerminal() {
+      if (l >= lines.length) return;
+      terminalEl.textContent += lines[l][c] || '';
+      c++;
+      if (c > lines[l].length) {
+        terminalEl.textContent += '\n';
+        l++; c = 0;
+      }
+      setTimeout(typeTerminal, 55);
+    }
+    setTimeout(typeTerminal, 1000);
+  }
 
-window.addEventListener("mouseup", () => {
-  isDown = false;
-  wrapper.classList.remove("dragging");
-  setTimeout(() => userInteracted = false, 6000);
-});
+  /* ===== Icons ===== */
+  if (window.lucide) lucide.createIcons();
 
-wrapper.addEventListener("mouseleave", () => {
-  isDown = false;
-  wrapper.classList.remove("dragging");
-});
-
-
-window.addEventListener("mousemove", e => {
-  if (!isDown) return;
-    const dx = e.clientX - startX;
-    const minX = -(track.scrollWidth - wrapper.offsetWidth);
-    const maxX = 0;
-    autoX = Math.min(maxX, Math.max(minX, startTranslate + dx));
-});
-
-wrapper.addEventListener("touchstart", e => {
-  isDown = true;
-  startX = e.touches[0].clientX;
-  startTranslate = autoX;
-});
-
-wrapper.addEventListener("touchend", () => {
-  isDown = false;
-  setTimeout(() => userInteracted = false, 6000);
-});
-
-
-function snapToCard() {
-  const cardWidth = document.querySelector('.project-card').offsetWidth + 40; // + gap
-  autoX = Math.floor(autoX / cardWidth) * cardWidth;
-
-  const minX = -(track.scrollWidth - wrapper.offsetWidth);
-  autoX = Math.min(0, Math.max(minX, autoX));
-}
-
-window.addEventListener("mouseup", snapToCard);
-wrapper.addEventListener("touchend", snapToCard);
-
-wrapper.addEventListener("touchmove", e => {
-  if (!isDown) return;
-  e.preventDefault();
-
-  const dx = e.touches[0].clientX - startX;
-  const minX = -(track.scrollWidth - wrapper.offsetWidth);
-  const maxX = 0;
-
-  autoX = Math.min(maxX, Math.max(minX, startTranslate + dx));
-}, { passive: false });
-
-
-  wrapper.addEventListener("touchcancel", () => {
-  isDown = false;
-});
-
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) direction = 0;
-  else direction = -1;
-});
-
-
-
+})();
 </script>
+
   
 <div id="vignette"></div>
 <div id="grain"></div>
 
   <!-- Mobile WhatsApp Floating Button -->
 <a href="https://wa.me/201064061048?text=Hello%20Mohamed%20I%20want%20to%20start%20a%20project%20with%20you"
-   target="_blank"
+   target="_blank" rel="noopener noreferrer"
    class="mobile-whatsapp">
   <i data-lucide="whatsapp" class="w-6 h-6"></i>
 </a>
