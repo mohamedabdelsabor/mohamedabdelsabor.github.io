@@ -1230,6 +1230,10 @@ const engineer = {
 <script src="https://unpkg.com/lucide@latest"></script>
   
 <script>
+
+  const isMobile = window.matchMedia("(pointer: coarse)").matches;
+  const particleCount = isMobile ? 30 : 80;
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
   });
@@ -1239,48 +1243,54 @@ const engineer = {
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-let w, h, particles = [];
+let w, h;
+let particles = [];
 
 function resize() {
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 }
-window.addEventListener("resize", resize);
+window.addEventListener("resize", () => {
+  resize();
+  initParticles();
+});
 resize();
 
-
-const isMobile = window.innerWidth < 768;
-const particleCount = isMobile ? 30 : 80;
-
-particles = [];
-for (let i = 0; i < particleCount; i++) {
-  particles.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 2 + 1,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    hue: Math.random() * 60 + 140
-  });
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      hue: Math.random() * 60 + 140
+    });
+  }
 }
 
+initParticles();
 
 function draw() {
-  ctx.clearRect(0,0,w,h);
+  ctx.clearRect(0, 0, w, h);
   for (let p of particles) {
     p.x += p.vx;
     p.y += p.vy;
+
     if (p.x < 0 || p.x > w) p.vx *= -1;
     if (p.y < 0 || p.y > h) p.vy *= -1;
 
     ctx.beginPath();
-    ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.15)`;
+    ctx.fillStyle = `hsla(${p.hue},80%,60%,0.15)`;
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
   }
   requestAnimationFrame(draw);
 }
-draw();
+
+if (!isMobile) draw();
+
 
 const glow = document.getElementById("mouse-glow");
 
@@ -1536,7 +1546,9 @@ wrapper.addEventListener("touchstart", () => userInteracted = true);
 // Auto scroll
 function autoScroll() {
   if (!isDown && !userInteracted) {
-    autoX += direction * 0.15;
+    const AUTO_SPEED = 0.12;
+    autoX += direction * AUTO_SPEED;
+
 
     const trackWidth = track.scrollWidth;
     const wrapperWidth = wrapper.offsetWidth;
@@ -1566,6 +1578,7 @@ wrapper.addEventListener("mousedown", e => {
 window.addEventListener("mouseup", () => {
   isDown = false;
   wrapper.classList.remove("dragging");
+  setTimeout(() => userInteracted = false, 6000);
 });
 
 wrapper.addEventListener("mouseleave", () => {
@@ -1590,12 +1603,13 @@ wrapper.addEventListener("touchstart", e => {
 
 wrapper.addEventListener("touchend", () => {
   isDown = false;
+  setTimeout(() => userInteracted = false, 6000);
 });
 
 
 function snapToCard() {
   const cardWidth = document.querySelector('.project-card').offsetWidth + 40; // + gap
-  autoX = Math.round(autoX / cardWidth) * cardWidth;
+  autoX = Math.floor(autoX / cardWidth) * cardWidth;
 
   const minX = -(track.scrollWidth - wrapper.offsetWidth);
   autoX = Math.min(0, Math.max(minX, autoX));
